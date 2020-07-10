@@ -2,6 +2,6 @@
 
 **Created to practice additional problems**
 
-**Focus on DSA topics like Trees, Hashmaps, Sorting etc**
+**Focus on DSA topics like Trees, Hashmaps, Sorting, Queues, Stacks**
 
-**Inludes JS & Python as main languages
+**Focus on JavaScript and Python as main langues**
