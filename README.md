@@ -4,4 +4,4 @@
 
 **Focus on DSA topics like Trees, Hashmaps, Sorting, Queues, Stacks**
 
-**Focus on JavaScript and Python as main langues**
+**Focus on JavaScript and Python as main languages**
