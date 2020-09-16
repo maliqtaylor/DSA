@@ -3,15 +3,19 @@
 
 
 const shuffleStr = (s, indecies) => {
-    Array.prototype.insert = function ( index, item ) {
-        this.splice( index, 0, item );
-    };
     let arrStr = s.split('');
-    let returnArr = [];
-    for(let i = 0; i < indecies.length; i++){
-        returnArr.insert(indecies[i], arrStr[i])
+    // let returnArr = [];
+    let indexStre = {};
+    for (let i = 0; i < arrStr.length; i++) {
+        if (!indexStre[arrStr[i]]) {
+            indexStre[arrStr[i]] = [indecies[i]]
+        }
+        else {
+            indexStre[arrStr[i]] = [...indexStre[arrStr[i]], indecies[i]]
+        }
     }
-    return returnArr.join('')
+    return indexStre
+    // return returnArr.join('')
 };
 
-console.log(shuffleStr('aaiougrt', [4,0,2,6,7,3,1,5]))
+console.log(shuffleStr('aaiougrt', [4, 0, 2, 6, 7, 3, 1, 5]))
