@@ -10,3 +10,22 @@
 // Kid 4 has 1 candy and even if he or she receives all extra candies will only have 4 candies. 
 // Kid 5 has 3 candies and if he or she receives at least 2 extra candies will have the greatest number of candies among the kids. 
 
+const kidsWithCandies = (candies, extraCandies) => {
+    let maxCandies = candies.reduce((acc, curr) => {
+        if (curr > acc) {
+            acc = curr
+        }
+        return acc
+    });
+    let returnArr = [];
+    candies.forEach((kid) => {
+        if (kid + extraCandies >= maxCandies) {
+            returnArr.push(true)
+        }
+        else {
+            returnArr.push(false)
+        }
+    })
+    return returnArr
+};
+console.log(kidsWithCandies([2, 3, 5, 1, 3], 3))
