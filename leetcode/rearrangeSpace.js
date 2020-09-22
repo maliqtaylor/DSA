@@ -8,5 +8,14 @@
 // Explanation: There are a total of 9 spaces and 4 words. We can evenly divide the 9 spaces between the words: 9 / (4-1) = 3 spaces.
 
 const reorderSpaces = (text) => {
-    
+    let arrText = text.split(" ");
+    let numSpaces = 0;
+    for(let i = 0; i < arrText.length; i++){
+        if(arrText[i] === ""){
+            numSpaces += 1
+            arrText.splice(i, 1)
+        }
+    }
+    return arrText
 };
+console.log(reorderSpaces("  this   is  a sentence "))
