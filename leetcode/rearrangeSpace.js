@@ -19,6 +19,7 @@ const reorderSpaces = (text) => {
             return el
         }
     });
-    return textArr
+    let numSpaces = counter / (textArr.length - 1);
+    return textArr.join(" ".repeat(numSpaces))
 };
 console.log(reorderSpaces("  this   is  a sentence "))
