@@ -2,6 +2,4 @@
 
 **Created to practice additional problems**
 
-**Focus on DSA topics like Trees, Hashmaps, Sorting, Queues, Stacks**
-
-**Focus on JavaScript and Python as main languages**
+**Focus on Data Structure and Algorithim problems from LeetCode and HackerRank**
