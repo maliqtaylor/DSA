@@ -9,17 +9,38 @@
 
 const reorderSpaces = (text) => {
     let counter = 0;
-    for(let i = 0; i < text.length; i++){
-        if(text[i] === " "){
+    for (let i = 0; i < text.length; i++) {
+        if (text[i] === " ") {
             counter += 1
         }
     };
     let textArr = text.split(" ").filter((el) => {
-        if(el !== " "){
+        if (el !== " ") {
             return el
         }
     });
+    if(textArr.length === 1){
+        ansStr = textArr.toString();
+        return ansStr += " ".repeat(counter)
+    }
     let numSpaces = counter / (textArr.length - 1);
-    return textArr.join(" ".repeat(numSpaces))
+    if (numSpaces % 1 === 0) {
+        return textArr.join(" ".repeat(numSpaces));
+    }
+    else if (!numSpaces) {
+        return text
+    }
+    else {
+        let roundedSpaces = Math.floor(numSpaces);
+        let extraSpacesNum = counter % (roundedSpaces);
+        let ansStr = textArr.join(" ".repeat(roundedSpaces));
+        let extraSpaces = " ".repeat(extraSpacesNum);
+        return ansStr += extraSpaces;
+    }
 };
-console.log(reorderSpaces("  this   is  a sentence "))
+// console.log(reorderSpaces("  this   is  a sentence "))
+// console.log(reorderSpaces("  walks  udp package   into  bar a"))
+// console.log(reorderSpaces("hello   world"))
+console.log(reorderSpaces(" practice   makes   perfect"))
+// console.log(reorderSpaces("   hello"));
+// console.log(reorderSpaces("a b c "))
