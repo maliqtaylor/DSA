@@ -14,33 +14,40 @@ const reorderSpaces = (text) => {
             counter += 1
         }
     };
+    //counts number of spaces in string and adds it to counter variable
     let textArr = text.split(" ").filter((el) => {
         if (el !== " ") {
             return el
         }
     });
-    if(textArr.length === 1){
+    //converts input string into array so long as char / element is not a space itself
+    if (textArr.length === 1) {
         ansStr = textArr.toString();
         return ansStr += " ".repeat(counter)
-    }
+    };
+    // checks if there is only one element and if so, converts it back into a string and adds all spaces to end
     let numSpaces = counter / (textArr.length - 1);
-    if (numSpaces % 1 === 0) {
-        return textArr.join(" ".repeat(numSpaces));
-    }
-    else if (!numSpaces) {
+    // counts how many spaces should be divided evenly by words aka counter / elements (or words) in array
+    if (!numSpaces) {
         return text
     }
-    else {
-        let roundedSpaces = Math.floor(numSpaces);
-        let extraSpacesNum = counter % (roundedSpaces);
-        let ansStr = textArr.join(" ".repeat(roundedSpaces));
+    // if there are no spaces at all, return the string itself
+    else if (numSpaces % 1 !== 0) {
+        let extraSpacesNum = counter % (textArr.length - 1);
+        let evenSpacesNum = Math.floor(numSpaces);
+        let ansStr = textArr.join(" ".repeat(evenSpacesNum));
         let extraSpaces = " ".repeat(extraSpacesNum);
         return ansStr += extraSpaces;
     }
+    // if the amount of spaces isnt evenly distributed with the amount of words, calculate how many should be distributed and append any extras to the end
+    else {
+        return textArr.join(" ".repeat(numSpaces));
+    }
+    // if the amount of spaces is even then just distrubute them evenly amongs the words / elements and return as a string
 };
-// console.log(reorderSpaces("  this   is  a sentence "))
-// console.log(reorderSpaces("  walks  udp package   into  bar a"))
-// console.log(reorderSpaces("hello   world"))
-console.log(reorderSpaces(" practice   makes   perfect"))
-// console.log(reorderSpaces("   hello"));
-// console.log(reorderSpaces("a b c "))
+console.log(reorderSpaces("  this   is  a sentence "));
+console.log(reorderSpaces("  walks  udp package   into  bar a"));
+console.log(reorderSpaces("hello   world"));
+console.log(reorderSpaces(" practice   makes   perfect"));
+console.log(reorderSpaces("   hello"));
+console.log(reorderSpaces("a b c "));
