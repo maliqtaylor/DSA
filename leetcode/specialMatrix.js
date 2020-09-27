@@ -23,11 +23,15 @@
 // Special positions are when a 1 has only 0's in its neighboring columns and rows
 
 const numSpecial = (mat) => {
-    let totalRows = 0;
-    let totalColumns = 0;
+    let stack = [];
     for (let i = 0; i < mat.length; i++) {
         for (let j = 0; j < mat.length; j++) {
-            console.log(mat[i][j])
+            let sum = 0;
+            if(mat[i][j] === 1){
+                sum = mat.reduce((acc, curr) => {
+                    return acc + curr
+                })
+            }
         }
     }
 };
