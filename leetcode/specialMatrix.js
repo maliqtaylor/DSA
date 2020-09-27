@@ -28,9 +28,10 @@ const numSpecial = (mat) => {
         for (let j = 0; j < mat.length; j++) {
             let sum = 0;
             if(mat[i][j] === 1){
-                sum = mat.reduce((acc, curr) => {
+                sum = mat[j].reduce((acc, curr) => {
                     return acc + curr
                 })
+                console.log(mat[i], sum)
             }
         }
     }
