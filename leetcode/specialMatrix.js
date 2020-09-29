@@ -31,10 +31,11 @@ const numSpecial = (mat) => {
                 sum = mat[j].reduce((acc, curr) => {
                     return acc + curr
                 })
-                console.log(mat[i], sum)
+                stack.push(sum)
             }
         }
     }
+    console.log(stack)
 };
 numSpecial([[1,0,0],
             [0,0,1],
