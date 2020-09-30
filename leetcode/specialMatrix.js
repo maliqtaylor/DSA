@@ -30,13 +30,18 @@ const numSpecial = (mat) => {
             if(mat[i][j] === 1){
                 sum = mat[j].reduce((acc, curr) => {
                     return acc + curr
-                })
+                });
+                for(let a = 0; a < mat.length; a++){
+                    sum = sum + mat[a][j]
+                }
                 stack.push(sum)
             }
         }
     }
-    console.log(stack)
+    return stack.filter((el) => {
+        el === 2
+    }).length
 };
-numSpecial([[1,0,0],
+console.log(numSpecial([[1,0,0],
             [0,0,1],
-            [1,0,0]])
+            [1,0,0]]))
