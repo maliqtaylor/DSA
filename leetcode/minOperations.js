@@ -22,10 +22,19 @@ const minOperations = (logs) => {
         if(logs[i].startsWith("..")){
             timesBack += 1
         }
-        // else {
-        //     folderNum 
-        // }
+        else if(!logs[i].startsWith(".")){
+            folderNum += 1
+        }
     }
-    return timesBack
+    let minAmtBack = folderNum - timesBack
+    if(minAmtBack < 0){
+        return 0
+    }
+    else{
+        return minAmtBack
+    }
 };
 console.log(minOperations(["d1/","d2/","../","d21/","./"]))
+console.log(minOperations(["d1/","d2/","./","d3/","../","d31/"]))
+console.log(minOperations(["d1/","../","../","../"]))
+console.log(minOperations(["./","wz4/","../","mj2/","../","../","ik0/","il7/"]))
