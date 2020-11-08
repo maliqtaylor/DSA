@@ -16,25 +16,25 @@
 // Explanation: Use this change folder operation "../" 2 times and go back to the main folder.
 
 const minOperations = (logs) => {
-    let folderNum = 0;
     let timesBack = 0;
-    for(let i = 0; i < logs.length; i++){
-        if(logs[i].startsWith("..")){
+    for (let i = 0; i < logs.length; i++) {
+        if (logs[i].startsWith("..")) {
+            if (!(timesBack === 0)) {
+                timesBack -= 1
+            }
+            else {
+                timesBack = 0
+
+            }
+        }
+        else if (!logs[i].startsWith(".")) {
             timesBack += 1
         }
-        else if(!logs[i].startsWith(".")){
-            folderNum += 1
-        }
     }
-    let minAmtBack = folderNum - timesBack
-    if(minAmtBack < 0){
-        return 0
-    }
-    else{
-        return minAmtBack
-    }
+
+    return timesBack
 };
-console.log(minOperations(["d1/","d2/","../","d21/","./"]))
-console.log(minOperations(["d1/","d2/","./","d3/","../","d31/"]))
-console.log(minOperations(["d1/","../","../","../"]))
-console.log(minOperations(["./","wz4/","../","mj2/","../","../","ik0/","il7/"]))
+console.log(minOperations(["d1/", "d2/", "../", "d21/", "./"]))
+console.log(minOperations(["d1/", "d2/", "./", "d3/", "../", "d31/"]))
+console.log(minOperations(["d1/", "../", "../", "../"]))
+console.log(minOperations(["./", "wz4/", "../", "mj2/", "../", "../", "ik0/", "il7/"]))
