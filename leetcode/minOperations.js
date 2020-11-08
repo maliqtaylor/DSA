@@ -16,5 +16,16 @@
 // Explanation: Use this change folder operation "../" 2 times and go back to the main folder.
 
 const minOperations = (logs) => {
-    
+    let folderNum = 0;
+    let timesBack = 0;
+    for(let i = 0; i < logs.length; i++){
+        if(logs[i].startsWith("..")){
+            timesBack += 1
+        }
+        // else {
+        //     folderNum 
+        // }
+    }
+    return timesBack
 };
+console.log(minOperations(["d1/","d2/","../","d21/","./"]))
