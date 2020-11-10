@@ -37,8 +37,8 @@ const slowestKey = (releaseTimes, keysPressed) => {
         let currTime = releaseTimes[i + 1] - releaseTimes[i]
         if(currTime > keyTime){
             keyTime = currTime
-            keyLetter = keysPressedArr[i]
-            console.log(keyTime, keyLetter, i)
+            keyLetter = keysPressedArr[i + 1]
+        console.log(keysPressedArr[i], "keyTime", keyTime,"currTime", currTime)
         }
         // else if(currTime === keyTime){
         //     keyIndex
