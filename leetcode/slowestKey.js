@@ -33,18 +33,21 @@ const slowestKey = (releaseTimes, keysPressed) => {
     let keyTime = releaseTimes[0];
     let i = 0;
     let keyLetter = keysPressedArr[i];
-    while(i < releaseTimes.length && releaseTimes[i + 1] !== null){
+    while (i < releaseTimes.length && releaseTimes[i + 1] !== null) {
         let currTime = releaseTimes[i + 1] - releaseTimes[i]
-        if(currTime > keyTime){
+        if(currTime === keyTime){
+            if(keyLetter.localeCompare(keysPressedArr[i + 1]) < 0){
+                keyLetter = keysPressedArr[i + 1]
+                keyTime = currTime
+            }
+        }
+        else if (currTime > keyTime) {
             keyTime = currTime
             keyLetter = keysPressedArr[i + 1]
-        console.log(keysPressedArr[i], "keyTime", keyTime,"currTime", currTime)
         }
-        // else if(currTime === keyTime){
-        //     keyIndex
-        // }
         i++
     }
-    return (keyTime, keyLetter)
+    return keyLetter
 };
-console.log(slowestKey([12,23,36,46,62], "spuda"))
+console.log(slowestKey([12, 23, 36, 46, 62], "spuda"))
+console.log(slowestKey([9,29,49,50], "cbcd"))
