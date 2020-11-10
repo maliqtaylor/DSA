@@ -29,5 +29,22 @@
 // The longest of these was the keypress for 'a' with duration 16.
 
 const slowestKey = (releaseTimes, keysPressed) => {
-    
+    let keysPressedArr = keysPressed.split("");
+    let keyTime = releaseTimes[0];
+    let i = 0;
+    let keyLetter = keysPressedArr[i];
+    while(i < releaseTimes.length && releaseTimes[i + 1] !== null){
+        let currTime = releaseTimes[i + 1] - releaseTimes[i]
+        if(currTime > keyTime){
+            keyTime = currTime
+            keyLetter = keysPressedArr[i]
+            console.log(keyTime, keyLetter, i)
+        }
+        // else if(currTime === keyTime){
+        //     keyIndex
+        // }
+        i++
+    }
+    return (keyTime, keyLetter)
 };
+console.log(slowestKey([12,23,36,46,62], "spuda"))
