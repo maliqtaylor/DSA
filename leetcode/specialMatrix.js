@@ -22,26 +22,39 @@
 
 // Special positions are when a 1 has only 0's in its neighboring columns and rows
 
+// const numSpecial = (mat) => {
+//     let stack = [];
+//     for (let i = 0; i < mat.length; i++) {
+//         for (let j = 0; j < mat.length; j++) {
+//             let sum = 0;
+//             if(mat[i][j] === 1){
+//                 sum = mat[j].reduce((acc, curr) => {
+//                     return acc + curr
+//                 });
+//                 for(let a = 0; a < mat.length; a++){
+//                     sum = sum + mat[a][j]
+//                 }
+//                 stack.push(sum)
+//             }
+//         }
+//     }
+//     return stack.filter((el) => {
+//         el === 2
+//     }).length
+// };
+
 const numSpecial = (mat) => {
-    let stack = [];
-    for (let i = 0; i < mat.length; i++) {
-        for (let j = 0; j < mat.length; j++) {
-            let sum = 0;
-            if(mat[i][j] === 1){
-                sum = mat[j].reduce((acc, curr) => {
-                    return acc + curr
-                });
-                for(let a = 0; a < mat.length; a++){
-                    sum = sum + mat[a][j]
-                }
-                stack.push(sum)
+    let numSpecial = 0;
+    for(let i = 0; i < mat.length; i++){
+        if(mat[i].reduce((acc, curr) => {return acc + curr}) === 1){
+        for(let j = 0; j < mat.length; j++){
+            if (mat[i][j] === 1){
+                console.log(j)
             }
         }
     }
-    return stack.filter((el) => {
-        el === 2
-    }).length
+    }
 };
 console.log(numSpecial([[1,0,0],
-            [0,0,1],
-            [1,0,0]]))
+                        [0,0,1],
+                        [1,0,0]]))
