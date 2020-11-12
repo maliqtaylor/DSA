@@ -43,18 +43,67 @@
 //     }).length
 // };
 
+// const numSpecial = (mat) => {
+//     let numSpecial = 0;
+//     for(let i = 0; i < mat.length; i++){
+//         if(mat[i].reduce((acc, curr) => {return acc + curr}) === 1){
+//         for(let j = 0; j < mat.length; j++){
+//             if (mat[i][j] === 1){
+//                 console.log(j)
+//             }
+//         }
+//     }
+//     }
+// };
+
+
 const numSpecial = (mat) => {
-    let numSpecial = 0;
-    for(let i = 0; i < mat.length; i++){
-        if(mat[i].reduce((acc, curr) => {return acc + curr}) === 1){
-        for(let j = 0; j < mat.length; j++){
-            if (mat[i][j] === 1){
-                console.log(j)
+    let xAxis = {}
+    let yAxis = {}
+    let num = 0
+
+    //If a 1 shows up add its x and y axis to corresponding objs
+    for (let i = 0; i < mat.length; i++) {
+        let arr = mat[i]
+
+        for (let j = 0; j < arr.length; j++) {
+            let curr = arr[j]
+            if (curr === 1) {
+                xAxis[i] ? xAxis[i] += 1 : xAxis[i] = 1
+                yAxis[j] ? yAxis[j] += 1 : yAxis[j] = 1
             }
         }
     }
+
+    //Loop the second time to see if the 1 only shows up on the x and y axis 1 time
+    //If it does add 1 to the output 
+    for (let i = 0; i < mat.length; i++) {
+        let arr = mat[i]
+
+        for (let j = 0; j < arr.length; j++) {
+            let curr = arr[j]
+            if (curr === 1) {
+                if (xAxis[i] === 1 && yAxis[j] === 1) num += 1
+            }
+
+        }
     }
+    return num
 };
-console.log(numSpecial([[1,0,0],
-                        [0,0,1],
-                        [1,0,0]]))
+console.log(numSpecial([[1, 0, 0],
+[0, 0, 1],
+[1, 0, 0]]))
+
+let mat = [
+    [0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 0, 1, 1]
+]
+
+console.log(numSpecial(mat));
+console.log(numSpecial([[1, 0, 0],
+[0, 0, 1],
+[1, 0, 0]]))
+
